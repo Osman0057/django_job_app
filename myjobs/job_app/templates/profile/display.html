@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}
+User Registration
+{% endblock%}
+
+{% block main-content %}
+<form method='POST'>
+       
+       <section>
+        {% if profile %}
+        <div>
+                <label>Username</label>
+                <input type='text' disabled value="{{profile.user}}"/>
+               </div>
+        
+               <div>
+                <label>First Name</label>
+                <input type='text' disabled value="{{profile.first_name}}"/>
+               </div>
+        
+               <div>
+                <label>Last Name</label>
+                <input type='text' disabled value="{{profile.last_name}}"/>
+               </div>
+        
+               <div>
+                <label>Date Of Birth</label>
+                <input type='date' disabled value="{{profile.date_of_birth}}"/>
+               </div>
+        
+               <div>
+                <label>CNIC Number</label>
+                <input type='number' disabled value="{{profile.cnic_number}}"/>
+               </div>
+        
+               <div>
+                <label>Education</label>
+                <input type='text' disabled value="{{profile.education}}"/>
+               </div>
+        
+               <div>Account Type</label>
+                <input type='text' disabled value="{{profile.user_type}}"/>
+               </div>
+        
+               <div>
+                <label>Resume</label>
+                <input type='file' disabled value="{{profile.resume}}"/>
+               </div>
+
+               {% endif %}
+       </section>
+
+       <section>
+        {% if jobs_created %}
+        {% for job_created in jobs_created %}
+        <div>
+                <div>
+                        <label>Job Description</label>
+                        <input type='text' disabled value="{{job_created.job_title}}"/>
+                </div>
+
+                <div>
+                        <label>Job Description</label>
+                        <input type='text' disabled value="{{job_created.job_description}}"/>
+                </div>  
+
+                <div>
+                        <label>Expire On</label>
+                        <input type='text' disabled value="{{job_created.expire_on}}"/>
+                </div>  
+
+                <div>
+                        <label>Created On</label>
+                        <input type='text' disabled value="{{job_created.created_on}}"/>
+                </div>  
+
+                <div>
+                        <label>Is Active</label>
+                        <input type='checkbox' disabled checked="{{job_created.is_activee}}"/>
+                </div>  
+        </div>
+        {% endfor %}
+        {% endif %}
+
+       </section>
+
+       <section>
+        {% if jobs_created %}
+        {% for job_applied in jobs_applied %}
+        <div>
+                <div>
+                        <label>Job Description</label>
+                        <input type='text' disabled value="{{job_applied.job.job_title}}"/>
+                </div>
+
+                <div>
+                        <label>Job Description</label>
+                        <input type='text' disabled value="{{job_applied.job.job_description}}"/>
+                </div>  
+
+                <div>
+                        <label>Expire On</label>
+                        <input type='text' disabled value="{{job_applied.job.expire_on}}"/>
+                </div>  
+
+                <div>
+                        <label>Created On</label>
+                        <input type='text' disabled value="{{job_applied.job.created_on}}"/>
+                </div>  
+
+                <div>
+                        <label>Is Active</label>
+                        <input type='checkbox' disabled checked="{{job_applied.job.is_activee}}" />
+                </div>  
+        </div>
+        {% endfor %}
+        {% endif %}
+
+       </section>
+
+</form>
+
+{%endblock %}

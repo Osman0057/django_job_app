@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+User Registration
+{% endblock%}
+
+{% block main-content %}
+<form method='POST'>
+        {% csrf_token %}
+        {% for forms in registration_form %}
+        <div>
+        {{forms.label_tag}}
+        {{forms}}
+        {{forms.error|striptags}}
+        </div>
+        {% endfor %}
+        <button type='submit'>Registration</button>
+        {% if registration_form.non_field_errors %}
+        {% for error in registration_form.non_field_error %}
+        {{error}}
+        {% endfor %}
+        {% endif %}
+</form>
+{% if messages %}
+{% for message in messages %}
+{{message}}
+{% endfor %}
+{% endif %}
+{%endblock %}

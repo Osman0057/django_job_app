@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+User Registration
+{% endblock%}
+
+{% block main-content %}
+<section>
+        <main>
+                {% if job %}
+        <div>
+                <h1>Title: </span>{{job.job_title}}</h1>
+                <p><span>Description: </span>{{job.job_description}}</p>
+                <p><span>Last Date: </span>{{job.expire_on}}</p>
+                <p><span>Created On: </span>{{job.created_on}}</p>
+                <div>
+                        <span>Is Active: </span>
+                        <input type='checkbox' checked="{{job.is_active}}"/>
+                </div>
+                <p><span>Created By: </span>{{job.created_by}}</p>
+                
+        </div>
+        <a href="/job/{{request.user.id}}/{{job.id}}">Proceed To Apply</a>
+        {% endif %}
+        </main>
+</sction>
+{%endblock %}
